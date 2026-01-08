@@ -1,6 +1,7 @@
 import React from 'react';
 import { CompanyData, InvoiceDetailed, Totals } from '../type';
 
+
 interface InvoicePreviewProps {
   companyData: CompanyData;
   invoiceData: InvoiceDetailed;
@@ -48,8 +49,10 @@ const InvoicePreview: React.FC<InvoicePreviewProps> = ({ companyData, invoiceDat
               <td className="border p-2">{item.description}</td>
               <td className="border p-2 text-center">{item.quantity}</td>
               <td className="border p-2 text-center">{item.unitPrice}</td>
-              <td className="border p-2 text-center">{item.taxRate}</td>   
-              <td className="border p-2 font-bold text-center">{(item.quantity * item.unitPrice * (1 + item.taxRate / 100)) .toFixed(2)}</td>
+              <td className="border p-2 text-center">{item.taxRate}</td>
+              <td className="border p-2 font-bold text-center">{
+                (Number(item.quantity || 0) * Number(item.unitPrice || 0) * ((1 + Number(item.taxRate) / 100))).toFixed(2)
+              }</td>
             </tr>
           ))}
         </tbody>
@@ -62,7 +65,7 @@ const InvoicePreview: React.FC<InvoicePreviewProps> = ({ companyData, invoiceDat
         <p className="font-bold text-blue-500 border-b pb-3">Total: {totals.total}</p>
       </div>
       {companyData.signature &&
-      <h1 className='font-medium mt-2'>Signature :<img src={companyData.signature} alt="Signature" className="w-32 mt-4" /></h1> }
+        <h1 className='font-medium mt-2'>Signature :<img src={companyData.signature} alt="Signature" className="w-32 mt-4" /></h1>}
       <p className="mt-4 text-slate-500 text-center text-sm"><b className='text-red-400'> </b>{invoiceData.notes}</p>
     </div>
   );

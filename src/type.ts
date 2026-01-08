@@ -27,15 +27,17 @@ export interface ClientData {
 }
 
 export interface InvoiceItem {
-  id?: string;
+  // id?: string;
   description: string;
   quantity: string;
   unitPrice: string;
   taxRate: string;
-  discount: string;
+  // discount: string;
+  // amount: string;
 }
 
 export interface InvoiceData {
+  id?: string;
   invoiceNumber: string;
   clientName: string;
   clientAddress: string;

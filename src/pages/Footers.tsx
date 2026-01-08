@@ -1,9 +1,8 @@
 "use client"
-import type React from "react"
-import { motion } from "framer-motion"
-import {Link} from "react-router-dom"
-
-import { useState } from "react"
+import type React from "react";
+import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
+import { useState } from "react";
 import { FaDiscord, FaGithub, FaLinkedin } from "react-icons/fa6";
 
 export default function Footers() {
@@ -13,7 +12,7 @@ export default function Footers() {
         e.preventDefault()
         // Handle email submission
         console.log("Email submitted:", email)
-        
+
         setEmail("")
     }
 

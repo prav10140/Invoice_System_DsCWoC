@@ -155,9 +155,10 @@ const ExportButtons: React.FC<ExportButtonsProps> = ({ companyData, invoiceData,
       ];
 
       invoiceData.items.forEach(item => {
+        const totalQty = Number(item.quantity) || 0;
         const price = Number(item.unitPrice) || 0;
         const tax = Number(item.taxRate) || 0;
-        const amount = item.quantity * price * (1 + tax / 100);
+        const amount = Number((totalQty * price) * (1 + tax / 100));
         rows.push([
           item.description,
           item.quantity,
@@ -167,7 +168,7 @@ const ExportButtons: React.FC<ExportButtonsProps> = ({ companyData, invoiceData,
         ]);
       });
 
-      slide.addTable(rows, {
+      slide.addTable(rows as never, {
         x: 1,
         y: 2,
         w: 8,

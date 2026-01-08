@@ -37,7 +37,7 @@ const InvoiceForm: React.FC<InvoiceFormProps> = ({ onChange, invoiceData }) => {
           Remove<Trash className='w-6 h-6'/></button>
         </div>
       ))}
-      <button type="button" onClick={() => append({ description: '', quantity: '', unitPrice: '', taxRate:''})} className="bg-violet-400 text-white p-3 mb-4 w-fit md:w-1/3 rounded-xl font-semibold justify-center items-center text-center cursor-pointer hover:bg-violet-500 text-lg">Add Items More</button>
+      <button type="button" onClick={() => append(invoiceData.items[0] || { description: '', quantity: '', unitPrice: '', taxRate:'', amount: ''})} className="bg-violet-400 text-white p-3 mb-4 w-fit md:w-1/3 rounded-xl font-semibold justify-center items-center text-center cursor-pointer hover:bg-violet-500 text-lg">Add Items More</button>
 
       <textarea {...register('notes')} placeholder="NOTES eg: Thank you for your business" className="mb-2 p-2 border rounded-sm font-light mr-2 flex-1 w-full" />
       <button type="submit" className="bg-blue-500 text-white p-3 mb-2 w-fit md:w-1/3 rounded-xl font-bold justify-center items-center text-center cursor-pointer hover:bg-blue-600">Updated Invoice</button>
